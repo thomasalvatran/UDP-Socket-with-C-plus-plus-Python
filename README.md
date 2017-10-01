@@ -4,6 +4,6 @@ UDP Socket for Server and Client
 
 THere is a library of GPIO to include in C++ and Python to interact with GPIIO
 
-[See detail](//img.youtube.com/vi/YO6tPDJC4fo/0.jpg)](//www.youtube.com/watch?v=YO6tPDJC4fo)
 
 [![UDP](https://img.youtube.com/vi/YO6tPDJC4fo/0.jpg)](https://www.youtube.com/watch?v=YO6tPDJC4fo)
+
