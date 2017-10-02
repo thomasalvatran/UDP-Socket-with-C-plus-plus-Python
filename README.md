@@ -67,6 +67,7 @@ class ExtendedQLabel(QtGui.QLabel):
 - Your Worker objects 'live' in the main thread, that means all their signals will be handled by the main thread's event loop. The fact that these objects are QThreads doesn't change that. https://stackoverflow.com/questions/23718761/pyqt-signals-not-handled-in-qthread-but-in-main-thread
 We need to implement like service in Android using thread and run asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread so it won't hogging the main thead.
 - Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019
+- Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot. In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.
 
 <p align="center">
     <td><img src="http://www.tovantran.com/blog/wp-content/uploads/2017/09/LoopEvent-1.png" width="400" title= "Event Loop"> </td>
