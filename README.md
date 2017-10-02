@@ -65,7 +65,7 @@ class ExtendedQLabel(QtGui.QLabel):
 - When the system crash when parentWidget or parent the change it has no parent and pointer is point to NULL
 - Change the display on main GUI using signal and slot from thread or popup dialog
 - Your Worker objects 'live' in the main thread, that means all their signals will be handled by the main thread's event loop. The fact that these objects are QThreads doesn't change that. https://stackoverflow.com/questions/23718761/pyqt-signals-not-handled-in-qthread-but-in-main-thread
-- In Android is called ANR (application not responding) so we need to implement like service in Android using thread and run asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread so it won't hogging the main thead.
+- In Android is called ANR (application not responding) so we need to implement like service in Android using thread and run asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread so it won't hogging the main thead instead of ANR in Qt is just crashed with the message applicaton exist. 
 - Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019
 - Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot. In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.
 
