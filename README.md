@@ -30,10 +30,11 @@ if is has not parent we have to use something similar to this to physical connec
 2. self.updateSignal.emit(1)
 3. self.worker.updateSignal.connect(self.turnLED)
 
- FormDialog *f = new FormDialog();  //f is obj
- connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), this, SLOT(updateUDPClient(const QHostAddress&, quint16))); 
- emit updateParent(UDP_IP, UDP_PORT);
-void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed
+FormDialog *f = new FormDialog();  //f is obj <br>
+connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), 
+                              this, SLOT(updateUDPClient(const QHostAddress&, quint16))); <br>
+emit updateParent(UDP_IP, UDP_PORT);<br>
+void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed<br>
 
 -Between show() and exed
 Method 1:
