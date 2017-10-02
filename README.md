@@ -65,5 +65,6 @@ class ExtendedQLabel(QtGui.QLabel):
 - Change the display on main GUI using signal and slot from thread or popup dialog
 - Your Worker objects 'live' in the main thread, that means all their signals will be handled by the main thread's event loop. The fact that these objects are QThreads doesn't change that. https://stackoverflow.com/questions/23718761/pyqt-signals-not-handled-in-qthread-but-in-main-thread
 We need to implement like service in Android using thread and run asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread so it won't hogging the main thead.
+Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019
 
-
+http://www.tovantran.com/blog/wp-content/uploads/2017/09/LoopEvent-1.png
