@@ -24,7 +24,7 @@ Remember that connections are not between classes, but between INSTANCES. If you
        else
            qDebug() << " ERROR ------------NULL POINTER"; // 0 is has no parent
            
-if is has not parent we have to use something similar to this to physical connect it. Connect signal and slot, emit and execute it.
+if is has not parent we have to use something similar to this to physical connect it. Connect signal and slot, emit to main thread and execute it.
 1. self.worker.updateSignal.connect(self.buttonClicked)   
 2. self.updateSignal.emit(1)
 3. self.worker.updateSignal.connect(self.turnLED)
