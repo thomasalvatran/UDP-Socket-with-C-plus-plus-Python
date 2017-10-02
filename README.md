@@ -77,6 +77,8 @@ class ExtendedQLabel(QtGui.QLabel):
         self.ip.clicked.connect(lambda  : self.change(0))  
         self.port.clicked.connect(lambda : self.change(1))
 
+Unlike Java in Android, Qt provides the tools and functions but up to the designer to put them together so often they are many ways to code but probably one or 2 ways to correct so a lot of trials and errors to understand this framework and depending on the invidual background. We need to have a deep understand about concepts: upcast/downcast, singletone, stack, constructor new concepts lambda and others declytype....these are really help when things do not work or program may just exist. There are many times I realized the object is created in the stack instead on the heap so function return the object is gone. This kind of knowledge really help when thing does not work.
+
 <p align="center">
     <td><img src="http://www.tovantran.com/blog/wp-content/uploads/2017/09/LoopEvent-1.png" width="400" title= "Event Loop"> </td>
   </p>
