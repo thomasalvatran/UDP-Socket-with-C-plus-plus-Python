@@ -3,7 +3,7 @@
 1. UDP Server and Client using C++/Qt Framework
 2. UDP Server and Client using Py/Qt Framework
 
-[![Video](http://img.youtube.com/vi/YO6tPDJC4fo/0.jpg)](http://www.youtube.com/watch?v=YO6tPDJC4fo)
+[![Video](http://img.youtube.com/vi/YO6tPDJC4fo/0.jpg)](http://www.youtube.com/watch?v=YO6tPDJC4fo)<br>
 https://www.youtube.com/watch?v=YO6tPDJC4fo
 
 There is a library of GPIO to include in C++ and Python to interact with GPIO. Qt frame work is different from Android in which
