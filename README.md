@@ -19,7 +19,7 @@ Remember that connections are not between classes, but between INSTANCES. If you
 
 ((UDPClient*)this->parentWidget())->updateUDPClient(UDP_IP, UDP_PORT); //don't forget this object
 
-       UDPClient *w = dynamic_cast<UDPClient *>(this->parentWidget());
+       UDPClient *w = dynamic_cast<UDPClient *>(this->parentWidget()); //must true polymorphism has virtual (function or ctor)
        if (0 != w)
            qDebug() << " OK ------------";    // NOT 0 has parent
        else
