@@ -54,7 +54,7 @@ class MyLineEdit(QLineEdit):
 
         return QLineEdit.event(self, event) 
 
-class ExtendedQLabel(QtGui.QLabel):
+class ExtendedQLabel(QtGui.QLabel):<br>
     def __init(self, parent):
         QLabel.__init__(self, parent)
 
