@@ -67,6 +67,6 @@ class ExtendedQLabel(QtGui.QLabel):
 We need to implement like service in Android using thread and run asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread so it won't hogging the main thead.
 Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019
 
-<tr>
+<p align="center">
     <td><img src="http://www.tovantran.com/blog/wp-content/uploads/2017/09/LoopEvent-1.png" width="400" title= "Event Loop"> </td>
-  </tr>
+  </p>
