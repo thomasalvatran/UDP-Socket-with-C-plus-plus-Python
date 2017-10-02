@@ -15,7 +15,8 @@ This project has been used most of the stuff that Qt framework offers. Python is
 
 We need to aware when working with Qt Frame work:
 
-Remember that connections are not between classes, but between INSTANCES. If you emit a signal and expect connected slots to be called, it must be emitted on an instance on which the connection was made. That's your problem. The relationship between parent and child widget.
+Remember that connections are not between classes, but between INSTANCES. If you emit a signal and expect connected slots to be called, it must be emitted on an instance on which the connection was made. That's your problem. The relationship between parent and child widget. <br>
+
 ((UDPClient*)this->parentWidget())->updateUDPClient(UDP_IP, UDP_PORT); //don't forget this object
 
        UDPClient *w = dynamic_cast<UDPClient *>(this->parentWidget());
