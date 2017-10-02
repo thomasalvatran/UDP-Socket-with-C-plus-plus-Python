@@ -4,6 +4,7 @@
 2. UDP Server and Client using Py/Qt Framework
 
 [![Video](http://img.youtube.com/vi/YO6tPDJC4fo/0.jpg)](http://www.youtube.com/watch?v=YO6tPDJC4fo)
+https://www.youtube.com/watch?v=YO6tPDJC4fo
 
 There is a library of GPIO to include in C++ and Python to interact with GPIO. Qt frame work is different from Android in which
 everything is buildin. Qt creator/design allows to create window/diaglog/widget which run in event loop from this window manager we can interact with with using signals and slots. The ui file can convert into python file for PyQt using "pyuic4". PyQt has it own functions to create GUI from code. These C++ code using Qt creator to GUI but GUI for python is done by coding. It is just taking longer but the GUI looks better then convert using "pyuic4". So we can not use for loop we have to use thread timer so thread becomes the main important components to interact with GUI. 
