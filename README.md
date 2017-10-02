@@ -42,26 +42,23 @@ exec() blocks the application flow while show() doesn't.
 exec is mainly used for modal dialogs. show() can be use for modal and modal less by setModal(true or false).
 
 -To wrap the image we can use CSS to change it or using setPixMap. If we use set PixMap for as a button for Dialog or Label and they have no clicked function or LineEdit has no click function we can emit this using event as described above by created its own classes.
-<div>
+<p>
 class MyLineEdit(QLineEdit):
     def __init__(self, *args):
         QLineEdit.__init__(self, *args)
-
     def event(self, event):
         if (event.type() == QEvent.KeyPress) and (event.key() == Qt.Key_Return):
             self.emit(SIGNAL("returnPressed"))
             return True
-
         return QLineEdit.event(self, event) 
-</div><div>
+</p><p>
 class ExtendedQLabel(QtGui.QLabel):    
     def __init(self, parent):
         QLabel.__init__(self, parent)
-        print ("ctor")
 
     def mouseReleaseEvent(self, ev):
         self.emit(SIGNAL('clicked()'))
-</div>
+</p>
 
 - When the system crash when parentWidget or parent the change it has no parent and pointer is point to NULL
 - Change the display on main GUI using signal and slot from thread or popup dialog
