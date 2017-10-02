@@ -46,13 +46,15 @@ exec is mainly used for modal dialogs. show() can be use for modal and modal les
 class MyLineEdit(QLineEdit):
     def __init__(self, *args):
         QLineEdit.__init__(self, *args)
+
     def event(self, event):
         if (event.type() == QEvent.KeyPress) and (event.key() == Qt.Key_Return):
             self.emit(SIGNAL("returnPressed"))
             return True
+
         return QLineEdit.event(self, event) 
 
-class ExtendedQLabel(QtGui.QLabel):    
+class ExtendedQLabel(QtGui.QLabel):
     def __init(self, parent):
         QLabel.__init__(self, parent)
 
