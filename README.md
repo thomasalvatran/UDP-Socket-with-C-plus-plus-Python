@@ -70,6 +70,11 @@ class ExtendedQLabel(QtGui.QLabel):
 - In Android is called ANR (application not responding) so we need to implement like service in Android using thread and running  asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread and emitting the main thread when it is finished its task so it won't hogging the main thead instead of ANR in Qt is just crashed with the message applicaton exist. 
 - Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019
 - Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot. In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.
+- If we want to pass parameter to the callable in PyQt we have to use lambda function. for examples
+        self.line.returnPressed.connect(self.lineedit_returnPressed)
+        self.line1.returnPressed.connect(self.line1edit_returnPressed)
+        self.ip.clicked.connect(lambda  : self.change(0))  
+        self.port.clicked.connect(lambda : self.change(1))
 
 <p align="center">
     <td><img src="http://www.tovantran.com/blog/wp-content/uploads/2017/09/LoopEvent-1.png" width="400" title= "Event Loop"> </td>
