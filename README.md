@@ -13,9 +13,9 @@ As a rule, signals are useful when using a widget, whereas events are useful whe
 emitted. But if we are implementing a class such as QPushButton, we need to write code to handle mouse and key events and emit the clicked() signal when necessary. P. 224 of C++ GUI Programming - Jasmin Blanchette <br>
 This project has been used most of the stuff that Qt framework offers. Python is always faster to implement but it does not has GUI but PyQt as we see in the video the graphic is almost the same and Python can read/write into hardware like C++.
 
-We need to aware when working with Qt Frame work:
+**We need to aware when working with Qt Frame work:**
 
-Remember that connections are not between classes, but between INSTANCES. If you emit a signal and expect connected slots to be called, it must be emitted on an instance on which the connection was made. That's your problem. The relationship between parent and child widget. <br>
+Remember that connections are not between classes, but between INSTANCES. If you emit a signal and expect connected slots to be called, it must be emitted on a+n instance on which the connection was made. That's your problem. The relationship between parent and child widget. <br>
 
 ((UDPClient*)this->parentWidget())->updateUDPClient(UDP_IP, UDP_PORT); //don't forget this object
 
