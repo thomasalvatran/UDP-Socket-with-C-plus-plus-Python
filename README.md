@@ -30,11 +30,11 @@ if is has not parent we have to use something similar to this to physical connec
 2. self.updateSignal.emit(1)<br>
 3. self.worker.updateSignal.connect(self.turnLED)<br>
 ```
-   FormDialog *f = new FormDialog();  //f is obj <br>
-   connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), <br>
-                                 this, SLOT(updateUDPClient(const QHostAddress&, quint16))); <br>
-   emit updateParent(UDP_IP, UDP_PORT);<br>
-   void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed<br>
+   FormDialog *f = new FormDialog();  //f is obj 
+   connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), 
+                                 this, SLOT(updateUDPClient(const QHostAddress&, quint16))); 
+   emit updateParent(UDP_IP, UDP_PORT);
+   void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed
 ```
 -Between show() and exed<br>
 Method 1:<br>
@@ -43,26 +43,26 @@ Method 2:<br>
     f->show();<br>
 exec() blocks the application flow while show() doesn't.<br>
 exec is mainly used for modal dialogs. show() can be use for modal and modal less by setModal(true or false).<br>
-```
+
 -To wrap the image we can use CSS to change it or using setPixMap. If we use set PixMap for as a button for Dialog or Label and they have no clicked function or LineEdit has no click function we can emit this using event as described above by created its own classes.<br>
 ```
-   class MyLineEdit(QLineEdit):<br>
-       def __init__(self, *args):<br>
-           QLineEdit.__init__(self, *args)<br>
+   class MyLineEdit(QLineEdit):
+       def __init__(self, *args):
+           QLineEdit.__init__(self, *args)
 
-    def event(self, event):<br>
-        if (event.type() == QEvent.KeyPress) and (event.key() == Qt.Key_Return):<br>
-            self.emit(SIGNAL("returnPressed"))<br>
-            return True<br>
+    def event(self, event):
+        if (event.type() == QEvent.KeyPress) and (event.key() == Qt.Key_Return):
+            self.emit(SIGNAL("returnPressed"))
+            return True
 
-        return QLineEdit.event(self, event) <br>
+        return QLineEdit.event(self, event) 
 
-   class ExtendedQLabel(QtGui.QLabel): <br>
-        def __init(self, parent):<br>
-           QLabel.__init__(self, parent)<br>
+   class ExtendedQLabel(QtGui.QLabel): 
+        def __init(self, parent):
+           QLabel.__init__(self, parent)
 
-    def mouseReleaseEvent(self, ev):<br>
-        self.emit(SIGNAL('clicked()'))<br>
+    def mouseReleaseEvent(self, ev):
+        self.emit(SIGNAL('clicked()'))
 ```
 - When the system crash when parentWidget or parent the change it has no parent and pointer is point to NULL<br>
 - Change the display on main GUI using signal and slot from thread or popup dialog<br>
