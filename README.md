@@ -16,7 +16,7 @@ This project has been used most of the stuff that Qt framework offers. Python is
 __**We need to aware when working with Qt Frame work:**__</p>
 
 __Remember that connections are not between classes, but between INSTANCES. If you emit a signal and expect connected slots to be called, it must be emitted on an instance on which the connection was made. That's your problem. The relationship between parent and child widget as follow.__ <br>
-```
+```python
 ((UDPClient*)this->parentWidget())->updateUDPClient(UDP_IP, UDP_PORT); //don't forget this object
 
        UDPClient *w = dynamic_cast<UDPClient *>(this->parentWidget()); //must true polymorphism has virtual (function or ctor)
@@ -72,12 +72,12 @@ exec is mainly used for modal dialogs. show() can be use for modal and modal les
 - Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot.<br> 
 In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.<br>
 - If we want to pass parameter to the callable in PyQt we have to use lambda function. for examples<br>
-```
+
         self.line.returnPressed.connect(self.lineedit_returnPressed)<br>
         self.line1.returnPressed.connect(self.line1edit_returnPressed)<br>
         self.ip.clicked.connect(lambda  : self.change(0))  <br>
         self.port.clicked.connect(lambda : self.change(1))<br>
-```
+
 Unlike Java in Android, Qt provides the tools and functions but up to the designer to put them together so often they are many ways to code but probably one or 2 ways to correct so a lot of trials and errors, reading and searching to understand this framework and depending on the invidual background. We need to have a deep understand about concepts: thread, child/parent, upcast/downcast, singletone, stack, constructor new concepts lambda and others declytype....these are really when coding in either C++/Qt or PyQt. There are many times I realized the object is created in the stack instead on the heap so function return the object is gone. This kind of knowledge really help when thing does not work. Qt creator/design, Pycharm and Android studio/Eclipse are great IDE to code Java, Python and C++. Sublime text is a good editor to clean the code ready to submit into github.com<br>
 
 <p align="center">
