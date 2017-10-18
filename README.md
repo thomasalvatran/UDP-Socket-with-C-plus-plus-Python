@@ -45,7 +45,7 @@ exec() blocks the application flow while show() doesn't.<br>
 exec is mainly used for modal dialogs. show() can be use for modal and modal less by setModal(true or false).<br>
 
 -To wrap the image we can use CSS to change it or using setPixMap. If we use set PixMap for as a button for Dialog or Label and they have no clicked function or LineEdit has no click function we can emit this using event as described above by created its own classes.<br>
-```C++
+```python
    class MyLineEdit(QLineEdit):
        def __init__(self, *args):
            QLineEdit.__init__(self, *args)
@@ -72,11 +72,11 @@ exec is mainly used for modal dialogs. show() can be use for modal and modal les
 - Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot.<br> 
 In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.<br>
 - If we want to pass parameter to the callable in PyQt we have to use lambda function. for examples<br>
-```C++
-        self.line.returnPressed.connect(self.lineedit_returnPressed)<br>
-        self.line1.returnPressed.connect(self.line1edit_returnPressed)<br>
-        self.ip.clicked.connect(lambda  : self.change(0))  <br>
-        self.port.clicked.connect(lambda : self.change(1))<br>
+```python
+        self.line.returnPressed.connect(self.lineedit_returnPressed)
+        self.line1.returnPressed.connect(self.line1edit_returnPressed)
+        self.ip.clicked.connect(lambda  : self.change(0))  
+        self.port.clicked.connect(lambda : self.change(1))
 ```
 Unlike Java in Android, Qt provides the tools and functions but up to the designer to put them together so often they are many ways to code but probably one or 2 ways to correct so a lot of trials and errors, reading and searching to understand this framework and depending on the invidual background. We need to have a deep understand about concepts: thread, child/parent, upcast/downcast, singletone, stack, constructor new concepts lambda and others declytype....these are really when coding in either C++/Qt or PyQt. There are many times I realized the object is created in the stack instead on the heap so function return the object is gone. This kind of knowledge really help when thing does not work. Qt creator/design, Pycharm and Android studio/Eclipse are great IDE to code Java, Python and C++. Sublime text is a good editor to clean the code ready to submit into github.com<br>
 
