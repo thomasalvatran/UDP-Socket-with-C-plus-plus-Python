@@ -30,13 +30,13 @@ if is has not parent we have to use something similar to this to physical connec
 2. self.updateSignal.emit(1)<br>
 3. self.worker.updateSignal.connect(self.turnLED)<br>
 
-FormDialog *f = new FormDialog();  //f is obj <br>
-connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), <br>
-                              this, SLOT(updateUDPClient(const QHostAddress&, quint16))); <br>
-emit updateParent(UDP_IP, UDP_PORT);<br>
-void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed<br>
+   FormDialog *f = new FormDialog();  //f is obj <br>
+   connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), <br>
+                                 this, SLOT(updateUDPClient(const QHostAddress&, quint16))); <br>
+   emit updateParent(UDP_IP, UDP_PORT);<br>
+   void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed<br>
 
--Between show() and exed
+-Between show() and exed<br>
 Method 1:<br>
     connect(ui->changeIP,SIGNAL(clicked()),f, SLOT(exec())); //either way exec() or show();<br>
 Method 2:<br>
@@ -46,9 +46,9 @@ exec is mainly used for modal dialogs. show() can be use for modal and modal les
 
 -To wrap the image we can use CSS to change it or using setPixMap. If we use set PixMap for as a button for Dialog or Label and they have no clicked function or LineEdit has no click function we can emit this using event as described above by created its own classes.<br>
 
-class MyLineEdit(QLineEdit):<br>
-    def __init__(self, *args):<br>
-        QLineEdit.__init__(self, *args)<br>
+   class MyLineEdit(QLineEdit):<br>
+       def __init__(self, *args):<br>
+           QLineEdit.__init__(self, *args)<br>
 
     def event(self, event):<br>
         if (event.type() == QEvent.KeyPress) and (event.key() == Qt.Key_Return):<br>
@@ -57,9 +57,9 @@ class MyLineEdit(QLineEdit):<br>
 
         return QLineEdit.event(self, event) <br>
 
-class ExtendedQLabel(QtGui.QLabel): <br>
-     def __init(self, parent):<br>
-        QLabel.__init__(self, parent)<br>
+   class ExtendedQLabel(QtGui.QLabel): <br>
+        def __init(self, parent):<br>
+           QLabel.__init__(self, parent)<br>
 
     def mouseReleaseEvent(self, ev):<br>
         self.emit(SIGNAL('clicked()'))<br>
