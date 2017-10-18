@@ -25,59 +25,60 @@ __Remember that connections are not between classes, but between INSTANCES. If y
        else
            qDebug() << " ERROR ------------NULL POINTER"; // 0 is has no parent
            
-if is has not parent we have to use something similar to this to physical connect it. Connect signal and slot, emit to main thread and execute it.
-1. self.worker.updateSignal.connect(self.buttonClicked)   
-2. self.updateSignal.emit(1)
-3. self.worker.updateSignal.connect(self.turnLED)
+if is has not parent we have to use something similar to this to physical connect it. Connect signal and slot, emit to main thread and execute it.<br>
+1. self.worker.updateSignal.connect(self.buttonClicked) <br>  
+2. self.updateSignal.emit(1)<br>
+3. self.worker.updateSignal.connect(self.turnLED)<br>
 
 FormDialog *f = new FormDialog();  //f is obj <br>
-connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), 
+connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), <br>
                               this, SLOT(updateUDPClient(const QHostAddress&, quint16))); <br>
 emit updateParent(UDP_IP, UDP_PORT);<br>
 void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed<br>
 
 -Between show() and exed
-Method 1:
-    connect(ui->changeIP,SIGNAL(clicked()),f, SLOT(exec())); //either way exec() or show();
-Method 2:
-    f->show();
-exec() blocks the application flow while show() doesn't.
-exec is mainly used for modal dialogs. show() can be use for modal and modal less by setModal(true or false).
+Method 1:<br>
+    connect(ui->changeIP,SIGNAL(clicked()),f, SLOT(exec())); //either way exec() or show();<br>
+Method 2:<br>
+    f->show();<br>
+exec() blocks the application flow while show() doesn't.<br>
+exec is mainly used for modal dialogs. show() can be use for modal and modal less by setModal(true or false).<br>
 
--To wrap the image we can use CSS to change it or using setPixMap. If we use set PixMap for as a button for Dialog or Label and they have no clicked function or LineEdit has no click function we can emit this using event as described above by created its own classes.
+-To wrap the image we can use CSS to change it or using setPixMap. If we use set PixMap for as a button for Dialog or Label and they have no clicked function or LineEdit has no click function we can emit this using event as described above by created its own classes.<br>
 
-class MyLineEdit(QLineEdit):
-    def __init__(self, *args):
-        QLineEdit.__init__(self, *args)
+class MyLineEdit(QLineEdit):<br>
+    def __init__(self, *args):<br>
+        QLineEdit.__init__(self, *args)<br>
 
-    def event(self, event):
-        if (event.type() == QEvent.KeyPress) and (event.key() == Qt.Key_Return):
-            self.emit(SIGNAL("returnPressed"))
-            return True
+    def event(self, event):<br>
+        if (event.type() == QEvent.KeyPress) and (event.key() == Qt.Key_Return):<br>
+            self.emit(SIGNAL("returnPressed"))<br>
+            return True<br>
 
-        return QLineEdit.event(self, event) 
+        return QLineEdit.event(self, event) <br>
 
-class ExtendedQLabel(QtGui.QLabel): 
-     def __init(self, parent):
-        QLabel.__init__(self, parent)
+class ExtendedQLabel(QtGui.QLabel): <br>
+     def __init(self, parent):<br>
+        QLabel.__init__(self, parent)<br>
 
-    def mouseReleaseEvent(self, ev):
-        self.emit(SIGNAL('clicked()'))
+    def mouseReleaseEvent(self, ev):<br>
+        self.emit(SIGNAL('clicked()'))<br>
 
-- When the system crash when parentWidget or parent the change it has no parent and pointer is point to NULL
-- Change the display on main GUI using signal and slot from thread or popup dialog
-- Your Worker objects 'live' in the main thread, that means all their signals will be handled by the main thread's event loop. The fact that these objects are QThreads doesn't change that. https://stackoverflow.com/questions/23718761/pyqt-signals-not-handled-in-qthread-but-in-main-thread
-- In Android is called ANR (application not responding) so we need to implement like service in Android using thread and running  asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread and emitting the main thread when it is finished its task so it won't hogging the main thead instead of ANR in Qt is just crashed with the message applicaton exist. 
-- Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019
-- Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot. In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.
-- If we want to pass parameter to the callable in PyQt we have to use lambda function. for examples
+- When the system crash when parentWidget or parent the change it has no parent and pointer is point to NULL<br>
+- Change the display on main GUI using signal and slot from thread or popup dialog<br>
+- Your Worker objects 'live' in the main thread, that means all their signals will be handled by the main thread's event loop. The fact that these objects are QThreads doesn't change that. https://stackoverflow.com/questions/23718761/pyqt-signals-not-handled-in-qthread-but-in-main-thread<br>
+- In Android is called ANR (application not responding) so we need to implement like service in Android using thread and running  asynchronous. On the server the socket readyread runs in the main thread will cause the deadlock if the file is too large so it needs to run its own thread and emitting the main thread when it is finished its task so it won't hogging the main thead instead of ANR in Qt is just crashed with the message applicaton exist. <br>
+- Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019<br>
+- Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot.<br> 
+In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.<br>
+- If we want to pass parameter to the callable in PyQt we have to use lambda function. for examples<br>
 
-        self.line.returnPressed.connect(self.lineedit_returnPressed)
-        self.line1.returnPressed.connect(self.line1edit_returnPressed)
-        self.ip.clicked.connect(lambda  : self.change(0))  
-        self.port.clicked.connect(lambda : self.change(1))
+        self.line.returnPressed.connect(self.lineedit_returnPressed)<br>
+        self.line1.returnPressed.connect(self.line1edit_returnPressed)<br>
+        self.ip.clicked.connect(lambda  : self.change(0))  <br>
+        self.port.clicked.connect(lambda : self.change(1))<br>
 
-Unlike Java in Android, Qt provides the tools and functions but up to the designer to put them together so often they are many ways to code but probably one or 2 ways to correct so a lot of trials and errors, reading and searching to understand this framework and depending on the invidual background. We need to have a deep understand about concepts: thread, child/parent, upcast/downcast, singletone, stack, constructor new concepts lambda and others declytype....these are really when coding in either C++/Qt or PyQt. There are many times I realized the object is created in the stack instead on the heap so function return the object is gone. This kind of knowledge really help when thing does not work. Qt creator/design, Pycharm and Android studio/Eclipse are great IDE to code Java, Python and C++. Sublime text is a good editor to clean the code ready to submit into github.com
+Unlike Java in Android, Qt provides the tools and functions but up to the designer to put them together so often they are many ways to code but probably one or 2 ways to correct so a lot of trials and errors, reading and searching to understand this framework and depending on the invidual background. We need to have a deep understand about concepts: thread, child/parent, upcast/downcast, singletone, stack, constructor new concepts lambda and others declytype....these are really when coding in either C++/Qt or PyQt. There are many times I realized the object is created in the stack instead on the heap so function return the object is gone. This kind of knowledge really help when thing does not work. Qt creator/design, Pycharm and Android studio/Eclipse are great IDE to code Java, Python and C++. Sublime text is a good editor to clean the code ready to submit into github.com<br>
 
 <p align="center">
     <td><img src="http://www.tovantran.com/blog/wp-content/uploads/2017/09/LoopEvent-1.png" width="400" title= "Event Loop"> </td>
