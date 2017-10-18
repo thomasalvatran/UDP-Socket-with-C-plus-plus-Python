@@ -29,23 +29,23 @@ if is has not parent we have to use something similar to this to physical connec
 1. self.worker.updateSignal.connect(self.buttonClicked) <br>  
 2. self.updateSignal.emit(1)<br>
 3. self.worker.updateSignal.connect(self.turnLED)<br>
-
+```
    FormDialog *f = new FormDialog();  //f is obj <br>
    connect(f, SIGNAL(updateParent(const QHostAddress&, quint16)), <br>
                                  this, SLOT(updateUDPClient(const QHostAddress&, quint16))); <br>
    emit updateParent(UDP_IP, UDP_PORT);<br>
    void UDPClient::updateUDPClient(const QHostAddress& s, quint16 i)  //This is main GUI get changed<br>
-
--Between show() and exed<br>
+```
+-Between show() and exed<br>```
 Method 1:<br>
     connect(ui->changeIP,SIGNAL(clicked()),f, SLOT(exec())); //either way exec() or show();<br>
 Method 2:<br>
     f->show();<br>
 exec() blocks the application flow while show() doesn't.<br>
 exec is mainly used for modal dialogs. show() can be use for modal and modal less by setModal(true or false).<br>
-
+```
 -To wrap the image we can use CSS to change it or using setPixMap. If we use set PixMap for as a button for Dialog or Label and they have no clicked function or LineEdit has no click function we can emit this using event as described above by created its own classes.<br>
-
+```
    class MyLineEdit(QLineEdit):<br>
        def __init__(self, *args):<br>
            QLineEdit.__init__(self, *args)<br>
@@ -63,7 +63,7 @@ exec is mainly used for modal dialogs. show() can be use for modal and modal les
 
     def mouseReleaseEvent(self, ev):<br>
         self.emit(SIGNAL('clicked()'))<br>
-
+```
 - When the system crash when parentWidget or parent the change it has no parent and pointer is point to NULL<br>
 - Change the display on main GUI using signal and slot from thread or popup dialog<br>
 - Your Worker objects 'live' in the main thread, that means all their signals will be handled by the main thread's event loop. The fact that these objects are QThreads doesn't change that. https://stackoverflow.com/questions/23718761/pyqt-signals-not-handled-in-qthread-but-in-main-thread<br>
