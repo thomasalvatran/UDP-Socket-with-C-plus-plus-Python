@@ -71,7 +71,7 @@ exec is mainly used for modal dialogs. show() can be use for modal and modal les
 - Python: concatenates a string and a number into a string and sending it using socket. http://www.tovantran.com/blog/?p=3019<br>
 - Whenever a signal is emitted, by default PyQt simply throws it away! To take notice of a signal we must connect it to a slot.<br> 
 In C++/Qt, slots are methods that must be declared with a special syntax; but in PyQt, they can be any callable we like (e.g., any function or method), and no special syntax is required when defining them.<br>
-- If we want to pass parameter to the callable in PyQt we have to use lambda function. for examples<br>
+- If we want to pass parameter to the callable in PyQt we have to use lambda -anonymous function to pass the parameter to function change. This serious stuff because it only accepted function without parameter therefore we have to use lambda For examples<br>
 ```python
         self.line.returnPressed.connect(self.lineedit_returnPressed)
         self.line1.returnPressed.connect(self.line1edit_returnPressed)
